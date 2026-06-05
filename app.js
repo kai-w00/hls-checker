@@ -1,25 +1,25 @@
 const RIVERS = {
   han: {
     title: "한강",
-    server: "http://211.181.145.25:9090",
+    server: "https://lw.hrfco.go.kr",
     openuser_id: "MMS20240930092445339",
     sources: ["한강홍수통제소", "한강유역환경청"],
   },
   geum: {
     title: "금강",
-    server: "http://112.166.0.200:9090",
+    server: "https://cctvlo.geumriver.go.kr",
     openuser_id: "MMS20240821161805883",
     sources: ["금강홍수통제소", "금강유역환경청"],
   },
   yeongsan: {
     title: "영산강",
-    server: "http://61.36.160.117:9090",
+    server: "https://cctvlo.yeongsanriver.go.kr",
     openuser_id: "MMS20240823144450171",
     sources: ["영산강홍수통제소", "영산강유역환경청"],
   },
   nakdong: {
     title: "낙동강",
-    server: "http://211.170.143.5:9090",
+    server: "https://cctvlo.nakdongriver.go.kr",
     openuser_id: "MMS20240517132147799",
     sources: ["낙동강홍수통제소", "낙동강유역환경청"],
   },
