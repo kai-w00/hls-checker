@@ -1,11 +1,85 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>HLS Checker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booki HLS Checker</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body style="background:#111;color:white;font-family:Arial">
-<h1>Booki HLS Checker</h1>
-<p>웹 버전 개발 중...</p>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="bkh.png" class="logo" />
+        <div>
+          <h1>Booki HLS Checker</h1>
+          <p>4대강 HLS 정상 판별 웹 버전</p>
+        </div>
+      </div>
+      <button onclick="loadAllRivers()">API 재조회</button>
+    </header>
+
+    <section class="river-buttons">
+      <button onclick="changeRiver('han')">한강</button>
+      <button onclick="changeRiver('geum')">금강</button>
+      <button onclick="changeRiver('yeongsan')">영산강</button>
+      <button onclick="changeRiver('nakdong')">낙동강</button>
+    </section>
+
+    <section class="panel">
+      <div class="filters">
+        <select id="sourceFilter" onchange="renderCameraList()">
+          <option value="전체">전체</option>
+        </select>
+        <input id="searchInput" placeholder="카메라명 / Device ID / 기관 검색" oninput="renderCameraList()" />
+      </div>
+
+      <div class="status" id="statusText">대기 중</div>
+
+      <div class="layout">
+        <div class="camera-list" id="cameraList"></div>
+
+        <div class="result-area">
+          <div class="result-header">
+            <button onclick="buildCheckList()">현재 목록 점검대상 생성</button>
+            <button onclick="selectAllRows(true)">전체 선택</button>
+            <button onclick="selectAllRows(false)">전체 해제</button>
+            <button onclick="startCheck()">선택 항목 점검 시작</button>
+            <button onclick="exportCsv()">CSV 다운로드</button>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>선택</th>
+                <th>강</th>
+                <th>기관</th>
+                <th>Device ID</th>
+                <th>카메라명</th>
+                <th>상태</th>
+                <th>응답시간</th>
+                <th>메시지</th>
+              </tr>
+            </thead>
+            <tbody id="checkTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="log" id="logBox"></section>
+  </div>
+
+  <div class="modal" id="playerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="playerTitle">HLS Player</span>
+        <button onclick="closePlayer()">닫기</button>
+      </div>
+      <video id="videoPlayer" controls autoplay muted></video>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
